@@ -5,6 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>David | Desarrollador Web</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    (function() {
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const stored = localStorage.getItem('theme');
+  
+      if (stored === 'dark' || (!stored && prefersDark)) {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+    })();
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
@@ -13,84 +25,117 @@
     }
   </style>
 </head>
-<body class="bg-neutral-900 text-white tracking-wide">
+<body class="bg-white text-black tracking-wide dark:bg-neutral-900 dark:text-white transition-colors duration-300">
 
-  <!-- HERO PRINCIPAL -->
-  <section class="min-h-screen flex flex-col justify-center items-center text-center px-4">
-    <h1 class="text-4xl md:text-6xl font-bold mb-4">
-      👋 Hola, soy <span class="text-cyan-400">David</span>
-    </h1>
-    <p class="text-xl md:text-2xl max-w-xl mb-6 text-neutral-300">
-      Desarrollador web apasionado por construir experiencias brutales con código limpio y funcional.
-    </p>
-    <a href="#proyectos" class="bg-cyan-500 hover:bg-cyan-600 text-white font-semibold py-3 px-6 rounded-xl shadow-lg transition-all">
-      Ver mis proyectos
-    </a>
-  </section>
+  <!-- Botón modo claro/oscuro -->
+  <header class="fixed top-4 right-4 z-50">
+    <button id="toggleTheme" role="button" aria-pressed="false" aria-label="Alternar modo claro/oscuro" 
+            class="bg-neutral-200 text-black dark:bg-neutral-700 dark:text-white px-4 py-2 rounded-xl shadow transition focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500">
+    </button>
+  </header>
 
-  <!-- SOBRE MÍ -->
-  <section id="sobremi" class="py-20 px-6 bg-neutral-800">
-    <div class="max-w-4xl mx-auto text-center">
-      <h2 class="text-3xl md:text-4xl font-bold mb-4 text-cyan-400">Sobre mí</h2>
-      <p class="text-lg text-neutral-300 leading-relaxed">
-        Soy un desarrollador web con ganas de comerse el mundo. Me gusta escribir código que sea útil, accesible y mantenible.
-        Busco oportunidades para crecer, aportar y dejar huella con cada línea.
+  <main>
+    <!-- HERO PRINCIPAL -->
+    <section class="min-h-screen flex flex-col justify-center items-center text-center px-4">
+      <h1 class="text-4xl md:text-6xl font-bold mb-4">
+        Hola, soy <span class="text-cyan-600 dark:text-cyan-400">David</span>
+      </h1>
+      <p class="text-xl md:text-2xl max-w-xl mb-6 text-neutral-700 dark:text-neutral-300">
+        Desarrollador web enfocado en crear soluciones eficientes, accesibles y bien estructuradas.
       </p>
-    </div>
-  </section>
+      <a href="#proyectos" class="bg-cyan-600 hover:bg-cyan-700 text-white font-semibold py-3 px-6 rounded-xl shadow-lg transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500">
+        Ver proyectos
+      </a>
+    </section>
 
-  <!-- HABILIDADES -->
-  <section id="habilidades" class="py-20 px-6">
-    <div class="max-w-4xl mx-auto text-center">
-      <h2 class="text-3xl md:text-4xl font-bold mb-10 text-cyan-400">Habilidades</h2>
-      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 text-lg text-neutral-200">
-        <div class="hover:scale-105 transition">HTML</div>
-        <div class="hover:scale-105 transition">CSS</div>
-        <div class="hover:scale-105 transition">JavaScript</div>
-        <div class="hover:scale-105 transition">PHP</div>
-        <div class="hover:scale-105 transition">MySQL</div>
-        <div class="hover:scale-105 transition">Laravel</div>
-        <div class="hover:scale-105 transition">Git</div>
-        <div class="hover:scale-105 transition">Tailwind</div>
+    <!-- SOBRE MÍ -->
+    <section id="sobremi" class="py-20 px-6 bg-neutral-100 text-black dark:bg-neutral-800 dark:text-white">
+      <div class="max-w-4xl mx-auto text-center">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4 text-cyan-600 dark:text-cyan-400">Sobre mí</h2>
+        <p class="text-lg leading-relaxed text-neutral-700 dark:text-neutral-300">
+          Soy desarrollador web orientado a resultados. Me interesa crear código claro, escalable y centrado en la accesibilidad.
+          Busco contribuir con proyectos donde pueda aportar valor y seguir creciendo profesionalmente.
+        </p>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- PROYECTOS -->
-  <section id="proyectos" class="py-20 px-6 bg-neutral-800">
-    <div class="max-w-6xl mx-auto text-center">
-      <h2 class="text-3xl md:text-4xl font-bold mb-10 text-cyan-400">Proyectos Destacados</h2>
-      <div class="grid md:grid-cols-2 gap-8">
-        <!-- Proyecto 1 -->
-        <div class="bg-neutral-700 rounded-xl p-6 shadow-md hover:shadow-xl transition text-left">
-          <h3 class="text-2xl font-semibold mb-2">Gestor de Rally Fotográfico</h3>
-          <p class="text-neutral-300 mb-3">
-            Aplicación PHP para gestionar eventos de fotografía, subir fotos, validarlas y votar.
-          </p>
-          <a href="#" class="text-cyan-400 hover:underline">Ver proyecto →</a>
-        </div>
-        <!-- Proyecto 2 -->
-        <div class="bg-neutral-700 rounded-xl p-6 shadow-md hover:shadow-xl transition text-left">
-          <h3 class="text-2xl font-semibold mb-2">Clon de AudazSeguros</h3>
-          <p class="text-neutral-300 mb-3">
-            Sitio WordPress adaptado y responsivo, desarrollado según especificaciones reales.
-          </p>
-          <a href="#" class="text-cyan-400 hover:underline">Ver proyecto →</a>
+    <!-- HABILIDADES -->
+    <section id="habilidades" class="py-20 px-6 bg-white dark:bg-neutral-900">
+      <div class="max-w-4xl mx-auto text-center">
+        <h2 class="text-3xl md:text-4xl font-bold mb-10 text-cyan-600 dark:text-cyan-400">Habilidades</h2>
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 text-lg text-neutral-800 dark:text-neutral-200">
+          <div class="hover:scale-105 transition">HTML</div>
+          <div class="hover:scale-105 transition">CSS</div>
+          <div class="hover:scale-105 transition">JavaScript</div>
+          <div class="hover:scale-105 transition">PHP</div>
+          <div class="hover:scale-105 transition">MySQL</div>
+          <div class="hover:scale-105 transition">Laravel</div>
+          <div class="hover:scale-105 transition">Git</div>
+          <div class="hover:scale-105 transition">Tailwind</div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- CONTACTO -->
-  <section id="contacto" class="py-20 px-6 text-center">
-    <h2 class="text-3xl md:text-4xl font-bold mb-6 text-cyan-400">Contacto</h2>
-    <p class="text-neutral-300 mb-6">¿Te mola lo que ves? Escríbeme y hablemos 👇</p>
-      Envíame un correo
-    </a>
-  </section>
+    <!-- PROYECTOS -->
+    <section id="proyectos" class="py-20 px-6 bg-neutral-100 text-black dark:bg-neutral-800 dark:text-white">
+      <div class="max-w-6xl mx-auto text-center">
+        <h2 class="text-3xl md:text-4xl font-bold mb-10 text-cyan-600 dark:text-cyan-400">Proyectos Destacados</h2>
+        <div class="grid md:grid-cols-2 gap-8">
+          <!-- Proyecto 1 -->
+          <article class="bg-neutral-200 dark:bg-neutral-700 rounded-xl p-6 shadow-md hover:shadow-xl transition text-left">
+            <h3 class="text-2xl font-semibold mb-2 dark:text-white">Gestor de Rally Fotográfico</h3>
+            <p class="text-neutral-800 dark:text-neutral-300 mb-3">
+              Aplicación PHP para organizar eventos fotográficos, gestionar inscripciones, validación y votaciones.
+            </p>
+            <a href="#" class="text-cyan-600 dark:text-cyan-400 hover:underline">Ver proyecto →</a>
+          </article>
+          <!-- Proyecto 2 -->
+          <article class="bg-neutral-200 dark:bg-neutral-700 rounded-xl p-6 shadow-md hover:shadow-xl transition text-left">
+            <h3 class="text-2xl font-semibold mb-2 dark:text-white">Clon de AudazSeguros</h3>
+            <p class="text-neutral-800 dark:text-neutral-300 mb-3">
+              Web responsive desarrollada en WordPress según una estructura y diseño de cliente real.
+            </p>
+            <a href="#" class="text-cyan-600 dark:text-cyan-400 hover:underline">Ver proyecto →</a>
+          </article>
+        </div>
+      </div>
+    </section>
 
-  <footer class="text-center py-8 text-neutral-500 text-sm">
+    <!-- CONTACTO -->
+    <section id="contacto" class="py-20 px-6 bg-white dark:bg-neutral-900 text-black dark:text-white text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-6 text-cyan-600 dark:text-cyan-400">Contacto</h2>
+      <p class="text-neutral-700 dark:text-neutral-300 mb-6">
+        ¿Quieres que colabore en tu proyecto o tienes alguna propuesta profesional?
+      </p>
+      <a href="mailto:tuemail@ejemplo.com" class="bg-cyan-600 hover:bg-cyan-700 text-white font-semibold py-3 px-6 rounded-xl shadow-lg transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500">
+        Enviar correo
+      </a>
+    </section>
+  </main>
+
+  <footer class="text-center py-8 text-neutral-500 dark:text-neutral-400 text-sm">
     © 2025 David. Todos los derechos reservados.
   </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const btn = document.getElementById('toggleTheme');
+
+      const updateText = () => {
+        const darkMode = document.documentElement.classList.contains('dark');
+        btn.textContent = darkMode ? 'Modo claro' : 'Modo oscuro';
+        btn.setAttribute('aria-pressed', darkMode);
+      };
+
+      btn.addEventListener('click', () => {
+        document.documentElement.classList.toggle('dark');
+        const darkMode = document.documentElement.classList.contains('dark');
+        localStorage.setItem('theme', darkMode ? 'dark' : 'light');
+        updateText();
+      });
+
+      updateText();
+    });
+  </script>
 </body>
 </html>
